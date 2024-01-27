@@ -13,24 +13,27 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damageDealt)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= damageDealt;
-
-        if(currentHealth < damageDealt || currentHealth <= 0)
+        currentHealth -= damage;
+        if (currentHealth < damage || currentHealth <= 0)
         {
-            Object.Destroy(gameObject);
+            Death();
         }
     }
     
-    public void Heal(float heal)
+    public void Heal(float healValue)
     {
-        currentHealth += heal;
+        currentHealth += healValue;
     }
 
     public float GetCurrentHealth()
     {
         return currentHealth;
+    }
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 
     private void TestHealth()
