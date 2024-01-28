@@ -14001,7 +14001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8323088187557090130, guid: 9a8268883459e8a4090a541119050c9b, type: 3}
       propertyPath: jumpPower
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323088187557090130, guid: 9a8268883459e8a4090a541119050c9b, type: 3}
+      propertyPath: crouchSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a8268883459e8a4090a541119050c9b, type: 3}
@@ -14022,5 +14026,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda3a542c4f57f74aac2c0d110140235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
   maxHealth: 100
