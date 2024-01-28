@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] public float currentHealth;
-    [SerializeField] public float maxHealth = 100;
+    public float currentHealth { get; private set; } 
+    [SerializeField] private float maxHealth = 100;
 
-    public void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
     }
@@ -27,11 +27,7 @@ public class Health : MonoBehaviour
         currentHealth += healValue;
     }
 
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-    public void Death()
+    private void Death()
     {
         Destroy(gameObject);
     }
