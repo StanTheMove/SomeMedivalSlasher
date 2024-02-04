@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    private Armor armor;
     public float currentHealth { get; private set; } 
     public float maxHealth = 100;
 
@@ -12,6 +13,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        armor = GetComponent<Armor>();
         currentHealth = maxHealth;
         healthBar.SetHealthValue(maxHealth / maxHealth);
     }
@@ -25,6 +27,17 @@ public class Health : MonoBehaviour
         }
         healthBar.SetHealthValue(currentHealth / maxHealth);
     }
+
+    public void TakeDamageArmor(float amount)
+    {
+        float endDamage = armor.CountDamage(amount);
+        LowHeal(endDamage);
+    }
+
+    public void LowHeal(float damage) 
+    {
+        currentHealth -= damage;
+    }
     
     public void Heal(float healValue)
     {
@@ -34,13 +47,5 @@ public class Health : MonoBehaviour
     private void Death()
     {
         Destroy(gameObject);
-    }
-
-    private void TestHealth()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(20);
-        }
     }
 }
