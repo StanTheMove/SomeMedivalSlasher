@@ -9,23 +9,19 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; } 
     public float maxHealth = 100;
 
-    public HealthBar healthBar;
-
-    private void Start()
+    protected void Start()
     {
         armor = GetComponent<Armor>();
         currentHealth = maxHealth;
-        healthBar.SetHealthValue(maxHealth / maxHealth);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth < damage || currentHealth <= 0)
         {
             Death();
         }
-        healthBar.SetHealthValue(currentHealth / maxHealth);
     }
 
     public void TakeDamageArmor(float amount)
