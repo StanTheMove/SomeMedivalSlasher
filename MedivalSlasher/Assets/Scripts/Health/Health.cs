@@ -24,15 +24,10 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamageArmor(float amount)
+    public virtual void TakeDamageArmor(float amount)
     {
         float endDamage = armor.CountDamage(amount);
-        LowHeal(endDamage);
-    }
-
-    public void LowHeal(float damage) 
-    {
-        currentHealth -= damage;
+        TakeDamage(endDamage);
     }
     
     public void Heal(float healValue)
