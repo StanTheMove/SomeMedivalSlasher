@@ -11,8 +11,10 @@ public class EnemyNavigationController : MonoBehaviour
     public float detectionRange = 10f;
     public float damageAmount = 10f;
     public float stoppingDistance = 2f;
+    public float attackCooldown = 1f;
 
     private NavMeshAgent agent;
+    private bool Cooldown = false;
 
     private void Start()
     {
@@ -30,9 +32,10 @@ public class EnemyNavigationController : MonoBehaviour
             {
                 agent.SetDestination(player.position);
 
-                if (distanceToPlayer <= agent.stoppingDistance)
+                if (distanceToPlayer <= agent.stoppingDistance && !Cooldown)
                 {
                     DamageDeal();
+                    StartCoroutine(AttackCooldown());
                 }
             }
             else
@@ -54,5 +57,10 @@ public class EnemyNavigationController : MonoBehaviour
             playerHealth.TakeDamage(damageAmount);
         }
     }
-
+    IEnumerator AttackCooldown()
+    {
+        Cooldown = true;
+        yield return new WaitForSeconds(attackCooldown);
+        Cooldown = false;
+    }
 }
