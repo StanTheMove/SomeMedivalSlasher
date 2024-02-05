@@ -16,4 +16,8 @@ public class PlayerHealth : Health
         base.TakeDamage(damage);
         healthBar.SetHealthValue(currentHealth / maxHealth);
     }
+    public override void TakeDamageArmor(float amount)
+    {
+        base.TakeDamageArmor(amount);
+    }
 }
