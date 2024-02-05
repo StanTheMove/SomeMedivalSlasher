@@ -2,25 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Enemies;
-using Player;
 
-[RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(EnemyAttacker))]
 public class EnemyNavigationController : MonoBehaviour
 {
-    private PlayerMovement movement;
-    private EnemyAttacker enmyComponent;
+    [SerializeField] public Transform player;
+    [SerializeField] public Transform townCentre;
 
-    [SerializeField] private float maxDistance = 100f;
-    private void Awake()
+    public float detectionRange = 10f;
+    public float damageAmount = 10f;
+    public float stoppingDistance = 2f;
+
+    private NavMeshAgent agent;
+
+    private void Start()
     {
-        movement = GetComponent<PlayerMovement>();
-        enmyComponent = GetComponent<EnemyAttacker>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = stoppingDistance;
     }
 
     private void Update()
     {
-        
+        if (player != null)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer <= detectionRange)
+            {
+                agent.SetDestination(player.position);
+
+                if (distanceToPlayer <= agent.stoppingDistance)
+                {
+                    DamageDeal();
+                }
+            }
+            else
+            {
+                agent.SetDestination(townCentre.position);
+            }
+        }
+        else
+        {
+            Debug.LogError("Player reference not set!"); 
+        }
     }
+
+    public void DamageDeal()
+    {
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(damageAmount);
+        }
+    }
+
 }

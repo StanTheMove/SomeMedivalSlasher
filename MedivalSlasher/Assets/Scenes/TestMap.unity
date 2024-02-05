@@ -9589,15 +9589,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673611459674428, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2.00385
       objectReference: {fileID: 0}
     - target: {fileID: 4673611459674428, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2.00385
       objectReference: {fileID: 0}
     - target: {fileID: 4673611459674428, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.90000004
+      value: 1.20231
       objectReference: {fileID: 0}
     - target: {fileID: 4673611459674428, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9605,7 +9605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673611459674428, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.65
+      value: -0.80231
       objectReference: {fileID: 0}
     - target: {fileID: 4673611459674428, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13333,6 +13333,28 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1903080087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5450137203705644371, guid: 7cbaa9a4afe98bf49903cceabb2e8670, type: 3}
+  m_PrefabInstance: {fileID: 5450137204833156342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1903080094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903080087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a9587b235f9a54c916d00778c161fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8323088186071137343}
+  townCentre: {fileID: 3488407151825435534}
+  detectionRange: 20
+  damageAmount: 1
+  stoppingDistance: 2
 --- !u!43 &1942600160
 Mesh:
   m_ObjectHideFlags: 0
@@ -14679,6 +14701,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3488407151221875289, guid: 02563ab099ba2f046808c3206ee451bc, type: 3}
   m_PrefabInstance: {fileID: 3488407151825435532}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3488407151825435534 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3488407151221875290, guid: 02563ab099ba2f046808c3206ee451bc, type: 3}
+  m_PrefabInstance: {fileID: 3488407151825435532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5450137204833156342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14756,6 +14783,7 @@ PrefabInstance:
       objectReference: {fileID: 1602946179}
     m_RemovedComponents:
     - {fileID: 5450137203705644380, guid: 7cbaa9a4afe98bf49903cceabb2e8670, type: 3}
+    - {fileID: 5450137203705644378, guid: 7cbaa9a4afe98bf49903cceabb2e8670, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7cbaa9a4afe98bf49903cceabb2e8670, type: 3}
 --- !u!1001 &5944143194735461619
 PrefabInstance:
@@ -15007,3 +15035,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 1602946179}
+--- !u!4 &8323088186071137343 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8323088187557090125, guid: 9a8268883459e8a4090a541119050c9b, type: 3}
+  m_PrefabInstance: {fileID: 8323088186071137314}
+  m_PrefabAsset: {fileID: 0}

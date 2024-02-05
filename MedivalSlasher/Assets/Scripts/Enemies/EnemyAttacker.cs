@@ -24,18 +24,4 @@ namespace Enemies
             }
         }
     }
-    public class EnemyOnlyPlayerAttack : EnemyAttacker
-    {
-        private void Start()
-        {
-            player = GameObject.FindGameObjectWithTag(playerTag);
-        }
-    }
-    public class EnemyOnlyCentreAttack : EnemyAttacker
-    {
-        private void Start()
-        {
-            target = GameObject.FindGameObjectWithTag(targetTag);
-        }
-    }
 }
