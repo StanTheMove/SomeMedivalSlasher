@@ -5,12 +5,13 @@ using TMPro;
 
 public class Armor : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI protectAmountText;
+    [SerializeField] private TextMeshProUGUI armorAmountText;
+
     private float protectAmount;
 
     private void Update()
     {
-        protectAmountText.text = protectAmount.ToString();
+        armorAmountText.text = protectAmount.ToString();
     }
 
     public float CountDamage(float amount)
