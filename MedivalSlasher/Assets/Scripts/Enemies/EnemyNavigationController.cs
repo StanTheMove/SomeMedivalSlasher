@@ -1,30 +1,34 @@
+using Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class EnemyNavigationController : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] public Transform player;
-    [SerializeField] public Transform townCentre;
-
-    public float detectionRange = 10f;
-    public float damageAmount = 10f;
-    public float stoppingDistance = 2f;
-    public float attackCooldown = 1f;
-
-    private NavMeshAgent agent;
-    private bool Cooldown = false;
-
-    private void Start()
+    public class EnemyNavigationController : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = stoppingDistance;
-    }
+        public Transform townCentre;
+        public Transform player;
 
-    private void Update()
-    {
-        if (player != null)
+        public float detectionRange = 10f;
+        public float damageAmount = 10f;
+        public float stoppingDistance = 2f;
+        public float attackCooldown = 1f;
+
+        private NavMeshAgent agent;
+        private bool Cooldown = false;
+        public float agentSpeed = 5f;
+
+        private void Start()
+        {
+            agent = GetComponent<NavMeshAgent>();
+            agent.stoppingDistance = stoppingDistance;
+            agent.speed = agentSpeed;
+        }
+
+        private void Update()
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -43,24 +47,21 @@ public class EnemyNavigationController : MonoBehaviour
                 agent.SetDestination(townCentre.position);
             }
         }
-        else
-        {
-            Debug.LogError("Player reference not set!"); 
-        }
-    }
 
-    public void DamageDeal()
-    {
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+        public void DamageDeal()
         {
-            playerHealth.TakeDamage(damageAmount);
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damageAmount);
+            }
         }
-    }
-    IEnumerator AttackCooldown()
-    {
-        Cooldown = true;
-        yield return new WaitForSeconds(attackCooldown);
-        Cooldown = false;
+
+        IEnumerator AttackCooldown()
+        {
+            Cooldown = true;
+            yield return new WaitForSeconds(attackCooldown);
+            Cooldown = false;
+        }
     }
 }
