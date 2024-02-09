@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class HealItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int healAmount = 20;
+
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Heal();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Heal()
     {
-        
+        Health currentHealth = GetComponent<Health>();
+        if (currentHealth != null)
+        {
+            currentHealth.Heal(healAmount);
+        }
+        Destroy(gameObject);
     }
 }
