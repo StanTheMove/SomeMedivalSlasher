@@ -1040,7 +1040,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 573339161}
-  - {fileID: 2944098260254791531}
+  - {fileID: 4188967129515163591}
   m_Father: {fileID: 42915009}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7966,6 +7966,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1027898254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3299225028390176686, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+  m_PrefabInstance: {fileID: 4188967129515163590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1049623598
 Mesh:
   m_ObjectHideFlags: 0
@@ -14027,56 +14032,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &2944098260254624587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1367329217982461069, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
-  m_PrefabInstance: {fileID: 4188967129515163590}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2944098260254791531 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1367329217982556333, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
-  m_PrefabInstance: {fileID: 4188967129515163590}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2944098260256560524
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2944098260254624587}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 17ca4549e98ba1b46a12cc4bfbbd1a1b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2944098260256560525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2944098260254624587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6daf92a13afbe084e8a61b821960596e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemy: {fileID: 981084442}
-  Sword_DH: {fileID: 2944098260254624587}
-  attackDamage: 7
-  attackRange: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1001 &3488407151825435532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14993,8 +14948,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3299225028389886862, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299225028389886862, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299225028389886862, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299225028389886862, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.36
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+--- !u!4 &4188967129515163591 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3299225028389886862, guid: 19432fa45ac330645a71b2001447eb51, type: 3}
+  m_PrefabInstance: {fileID: 4188967129515163590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4188967129515163594
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027898254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17ca4549e98ba1b46a12cc4bfbbd1a1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4188967129515163595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027898254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84b7c2a329373246a7a0276d1967e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 981084442}
+  spear: {fileID: 1027898254}
+  attackDamage: 7
+  attackRange: 10
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &5450137204833156342
 PrefabInstance:
   m_ObjectHideFlags: 0
