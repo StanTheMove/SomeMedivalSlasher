@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     private Armor armor;
     public float currentHealth { get; private set; } 
     public float maxHealth = 100;
+    public Vector2 respawnPosition = new Vector2(0, 0);
 
     protected void Start()
     {
@@ -38,5 +39,11 @@ public class Health : MonoBehaviour
     private void Death()
     {
         Destroy(gameObject);
+    }
+
+    public void Die()
+    {
+        respawnPosition = new
+        Vector2(Random.Range(-10f, 10f), Random.Range(-10, 10f));
     }
 }
