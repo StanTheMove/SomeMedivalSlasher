@@ -6,11 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject PausePanel;
     public GameObject OptionsPanel;
-    public GameObject BackButton;
     private bool IsInPause;
-    private bool OptionsButton;
-    private bool ButtonBack;
-
 
     private void Update()
     { 
@@ -34,18 +30,6 @@ public class PauseMenu : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0f;
         }
-
-        if (OptionsButton)
-        {
-            OptionsPanel.SetActive(true);
-            PausePanel.SetActive(false);          
-        }
-
-        if (ButtonBack)
-        {
-            OptionsPanel.SetActive(false);
-            PausePanel.SetActive(true);
-        }
     }
 
     public void ClosePause()
@@ -53,13 +37,9 @@ public class PauseMenu : MonoBehaviour
         IsInPause = false;
     }
 
-    public void ButtonOptions()
+    public void PanelOptions()
     {
-        OptionsButton = true;
-    }
-
-    public void bakButton()
-    {
-        ButtonBack = true;
+        OptionsPanel.SetActive(true);
+        PausePanel.SetActive(false);
     }
 }
