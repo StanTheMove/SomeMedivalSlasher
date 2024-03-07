@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerHealth : Health
 {
     public HealthBar healthBar;
+    public Action OnPlayerDeath;
 
     void Start()
     {
-        base.Start();
-        healthBar.SetHealthValue(maxHealth / maxHealth);
+        Init();
+    }
+    
+    protected override void Init()
+    {
+        base.Init();
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
+        healthBar.SetHealthValue(maxHealth / maxHealth); 
     }
     public override void TakeDamage(float damage)
     {
