@@ -5,61 +5,92 @@ using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 public class Bow : MonoBehaviour
 {
-    public GameObject bow;
-    public GameObject arrowPrefab;
-    public Transform arrowSpawnPoint;
-    public float shootingPower = 30f;
+    [SerializeField]
+    private Arrow arrowPrefab;
 
-    private GameObject currentArrow;
-    private bool isPulling;
+    [SerializeField]
+    private float reloadTime;
+
+    [SerializeField]
+    private Transform spawnPoint;
+
+    [SerializeField]
+    private float maxFirePower;
+
+    [SerializeField]
+    private float firePowerSpeed;
+
+    private float firePower;
+
+    private bool fire;
+
+    private Arrow currentArrow;
+    private string enemyTag;
+    private bool isReloading;
+
+    private void Start()
+    {
+        TheEnemyTag(enemyTag);
+        Reload();
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
-            StartPulling();
+            fire = true;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (fire && firePower < maxFirePower)
         {
-            Shoot();
-            BowFire();
+            firePower += Time.deltaTime * firePowerSpeed;
         }
 
-        if (isPulling)
+        if (fire && Input.GetMouseButtonUp(0))
         {
-            PullString();
+            Fire(firePower);
+            firePower = 0;
+            fire = false;
         }
     }
 
-    void StartPulling()
+    public void TheEnemyTag(string enemyTag)
     {
-        isPulling = true;
-        currentArrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+        this.enemyTag = enemyTag;
     }
 
-    void PullString()
+    public void Reload()
     {
-        float pullValue = Mathf.Clamp(Vector3.Distance(transform.position, currentArrow.transform.position), 0f, 1f);
-        currentArrow.transform.position = arrowSpawnPoint.position + arrowSpawnPoint.forward * pullValue;
+        if (isReloading || currentArrow != null) return;
+        {
+            isReloading = true;
+        }
+        StartCoroutine(ReloadAfterShoot());
     }
 
-    void Shoot()
+    public void Fire(float firePower)
     {
-        isPulling = false;
-        Rigidbody rb = currentArrow.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        rb.AddForce(arrowSpawnPoint.forward * shootingPower, ForceMode.Impulse);
-        currentArrow.transform.SetParent(null);
+        if (isReloading || currentArrow == null) return;
+        var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
+        currentArrow.ArrowFly(force);
         currentArrow = null;
+        Reload();
     }
 
-    IEnumerator BowFire()
+    public bool IsReady()
     {
-        bow.GetComponent<Animator>().Play("bowstring");
-        yield return new WaitForSeconds(1.5f);
-        bow.GetComponent<Animator>().Play("New State");
+        return (!isReloading && currentArrow != null);
     }
 
+    private IEnumerator ReloadAfterShoot ()
+    {
+        yield return new WaitForSeconds(reloadTime);
+        currentArrow = Instantiate(arrowPrefab, spawnPoint);
+        currentArrow.transform.localPosition = Vector3.zero;
+        currentArrow.TheEnemyTag(enemyTag);
+        isReloading = false;
+    }
 }
