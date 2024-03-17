@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Town Centre
   - Enemy
+  - HealthBar
   layers:
   - Default
   - TransparentFX
