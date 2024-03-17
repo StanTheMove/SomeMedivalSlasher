@@ -1,16 +1,18 @@
-using Enemies;
+﻿using Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using System;
 
 namespace Enemies
 {
     public class EnemyNavigationController : MonoBehaviour
     {
-        public Transform townCentre;
+        private Transform townCentre;
         public Transform player;
+
+        private EnemySearchControll searchControll;
 
         public float detectionRange = 10f;
         public float damageAmount = 10f;
@@ -22,14 +24,16 @@ namespace Enemies
         public float agentSpeed = 5f;
 
         private void Start()
-        {
+        {   
+            searchControll = GetComponent<EnemySearchControll>();
             agent = GetComponent<NavMeshAgent>();
             agent.stoppingDistance = stoppingDistance;
             agent.speed = agentSpeed;
         }
-
+        
         private void Update()
         {
+            player = searchControll.FindClosestObject(EnemySearchControll.playerTag);
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
             if (distanceToPlayer <= detectionRange)
@@ -44,6 +48,7 @@ namespace Enemies
             }
             else
             {
+                townCentre = searchControll.FindClosestObject(EnemySearchControll.targetTag);
                 agent.SetDestination(townCentre.position);
             }
         }

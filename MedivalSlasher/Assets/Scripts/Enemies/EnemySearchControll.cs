@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using System;
 
 namespace Enemies
 {
@@ -10,21 +11,7 @@ namespace Enemies
         public static string playerTag = "Player";
         public static string targetTag = "Town Centre";
 
-        public Transform target;
-
-        public void Update()
-        {
-            if (target == null)
-            {
-                target = FindClosestObject(playerTag);
-                if (target == null)
-                {
-                    target = FindClosestObject(targetTag);
-                }
-            }
-        }
-
-        Transform FindClosestObject(string tag)
+        public Transform FindClosestObject(string tag)
         {
             GameObject closestObject = null;
             float closestDistance = Mathf.Infinity;
