@@ -11,6 +11,7 @@ namespace Enemies
     {
         private Transform townCentre;
         public Transform player;
+        public Action OnPlayerRespawn;
 
         private EnemySearchControll searchControll;
 
@@ -36,6 +37,18 @@ namespace Enemies
             player = searchControll.FindClosestObject(EnemySearchControll.playerTag);
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+            if (player.position == null)
+            {
+                townCentre = searchControll.FindClosestObject(EnemySearchControll.targetTag);
+                agent.SetDestination(townCentre.position);
+            }
+            else if (player.position != null) 
+            {
+                OnPlayerRespawn.Invoke();
+                player = searchControll.FindClosestObject(EnemySearchControll.playerTag);
+                agent.SetDestination(player.position);
+            }
+
             if (distanceToPlayer <= detectionRange)
             {
                 agent.SetDestination(player.position);
@@ -50,7 +63,7 @@ namespace Enemies
             {
                 townCentre = searchControll.FindClosestObject(EnemySearchControll.targetTag);
                 agent.SetDestination(townCentre.position);
-            }
+            } 
         }
 
         public void DamageDeal()
