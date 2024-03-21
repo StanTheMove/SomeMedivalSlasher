@@ -34,24 +34,14 @@ namespace Enemies
         
         private void Update()
         {
-            player = searchControll.FindClosestObject(EnemySearchControll.playerTag);
+            player = GameObject.FindGameObjectWithTag(searchControll.playerTag).transform;
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (player.position == null)
-            {
-                townCentre = searchControll.FindClosestObject(EnemySearchControll.targetTag);
-                agent.SetDestination(townCentre.position);
-            }
-            else if (player.position != null) 
-            {
-                OnPlayerRespawn.Invoke();
-                player = searchControll.FindClosestObject(EnemySearchControll.playerTag);
-                agent.SetDestination(player.position);
-            }
+            print(distanceToPlayer);
 
             if (distanceToPlayer <= detectionRange)
             {
-                agent.SetDestination(player.position);
+                agent.SetDestination(townCentre.position);
 
                 if (distanceToPlayer <= agent.stoppingDistance && !Cooldown)
                 {
@@ -61,8 +51,9 @@ namespace Enemies
             }
             else
             {
-                townCentre = searchControll.FindClosestObject(EnemySearchControll.targetTag);
+                townCentre = GameObject.FindGameObjectWithTag(searchControll.targetTag).transform;
                 agent.SetDestination(townCentre.position);
+                print(townCentre);
             } 
         }
 

@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
         currentHealth += healValue;
     }
 
-    private void Death()
+    protected virtual void Death()
     {
         Destroy(gameObject);
     }

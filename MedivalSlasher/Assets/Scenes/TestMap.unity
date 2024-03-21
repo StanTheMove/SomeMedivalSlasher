@@ -7277,6 +7277,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1001007969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001007971}
+  - component: {fileID: 1001007970}
+  m_Layer: 0
+  m_Name: Spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1001007970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001007969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60be7d762956266468969c6a8abd7ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 5450137203705644371, guid: 7cbaa9a4afe98bf49903cceabb2e8670, type: 3}
+  spawnPoints:
+  - {fileID: 1019567283}
+  - {fileID: 1001007971}
+  timeBetweenWaves: 10
+  timeBetweenEnemies: 5
+  numberOfEnemiesPerWave: 3
+  numberOfWaves: 3
+--- !u!4 &1001007971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001007969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.53, y: 3.38, z: -0.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1008557551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7290,57 +7342,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 15
---- !u!1 &1019567281
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1019567283}
-  - component: {fileID: 1019567282}
-  m_Layer: 0
-  m_Name: Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1019567282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019567281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60be7d762956266468969c6a8abd7ea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5450137203705644371, guid: 7cbaa9a4afe98bf49903cceabb2e8670, type: 3}
-  spawnPoints:
-  - {fileID: 1019567283}
-  timeBetweenWaves: 10
-  timeBetweenEnemies: 3
-  numberOfEnemiesPerWave: 8
-  numberOfWaves: 3
---- !u!4 &1019567283
+--- !u!4 &1019567283 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+  m_PrefabInstance: {fileID: 1802023680503809127}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019567281}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.15138, y: 3.38, z: 10.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1022332078
 Mesh:
   m_ObjectHideFlags: 0
@@ -14018,6 +14024,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6abd437ef86377448cb7040b1d555db, type: 3}
+--- !u!1001 &1802023680503809127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.15138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153044, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802023680172153046, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
+      propertyPath: m_Name
+      value: Spawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3319c4ad393c3f4d832f2d2768ab7eb, type: 3}
 --- !u!1001 &3488407151825435532
 PrefabInstance:
   m_ObjectHideFlags: 0

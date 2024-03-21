@@ -28,4 +28,8 @@ public class PlayerHealth : Health
     {
         base.TakeDamageArmor(amount);
     }
+    protected override void Death()
+    {
+        OnPlayerDeath?.Invoke();
+    }
 }

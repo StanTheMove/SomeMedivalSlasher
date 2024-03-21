@@ -8,8 +8,8 @@ namespace Enemies
 {
     public class EnemySearchControll : MonoBehaviour
     {
-        public static string playerTag = "Player";
-        public static string targetTag = "Town Centre";
+        public string playerTag = "Player";
+        public string targetTag = "Town Centre";
 
         public Transform FindClosestObject(string tag)
         {
