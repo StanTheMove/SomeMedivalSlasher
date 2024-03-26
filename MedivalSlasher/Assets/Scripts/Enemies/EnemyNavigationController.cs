@@ -10,7 +10,7 @@ namespace Enemies
     public class EnemyNavigationController : MonoBehaviour
     {
         private Transform townCentre;
-        public Transform player;
+        private Transform player;
         public Action OnPlayerRespawn;
 
         private EnemySearchControll searchControll;
@@ -25,7 +25,9 @@ namespace Enemies
         public float agentSpeed = 5f;
 
         private void Start()
-        {   
+        {
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            player = playerObject.transform;
             searchControll = GetComponent<EnemySearchControll>();
             agent = GetComponent<NavMeshAgent>();
             agent.stoppingDistance = stoppingDistance;
@@ -34,14 +36,11 @@ namespace Enemies
         
         private void Update()
         {
-            player = GameObject.FindGameObjectWithTag(searchControll.playerTag).transform;
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-            print(distanceToPlayer);
 
             if (distanceToPlayer <= detectionRange)
             {
-                agent.SetDestination(townCentre.position);
+                agent.SetDestination(player.position);
 
                 if (distanceToPlayer <= agent.stoppingDistance && !Cooldown)
                 {
@@ -53,8 +52,12 @@ namespace Enemies
             {
                 townCentre = GameObject.FindGameObjectWithTag(searchControll.targetTag).transform;
                 agent.SetDestination(townCentre.position);
-                print(townCentre);
             } 
+        }
+
+        public void SetPlayer(GameObject playerObject)
+        {
+            player = playerObject.transform;
         }
 
         public void DamageDeal()

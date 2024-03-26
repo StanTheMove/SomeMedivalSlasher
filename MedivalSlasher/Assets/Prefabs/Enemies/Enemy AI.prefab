@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRange: 20
-  damageAmount: 20
+  detectionRange: 10
+  damageAmount: 25
   stoppingDistance: 2
   attackCooldown: 2
-  agentSpeed: 5
+  agentSpeed: 4
 --- !u!114 &9063444715826796532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +167,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343f90624d578314597454ab82ef3784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTag: Player
+  targetTag: Town Centre
