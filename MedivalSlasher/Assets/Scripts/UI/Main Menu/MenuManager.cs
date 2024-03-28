@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject optionsPanel;
     public void PlayGame()
     {
-        Application.LoadLevel("TestMap");
+        Application.LoadLevel("Slavica Free");
     }
 
     public void QuitGame()

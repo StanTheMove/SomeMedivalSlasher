@@ -35,7 +35,7 @@ public class Sword : MonoBehaviour
     IEnumerator SwordSwing()
     { 
     Sword_DH.GetComponent<Animator>().Play("SwordSwing");
-    yield return new WaitForSeconds(1.0f);
+    yield return new WaitForSeconds(2f);
     Sword_DH.GetComponent<Animator>().Play("New State");
     }
 }

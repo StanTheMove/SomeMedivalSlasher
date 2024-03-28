@@ -21,7 +21,7 @@ public class PlayerSpawner : MonoBehaviour
         GameObject spawnObject = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
         OnPlayerRespawn?.Invoke();
         Player = spawnObject;
-        Player.GetComponent<PlayerHealth>().OnPlayerDeath += SpawnCharacter;
+        Player.GetComponent<PlayerHealth>().OnPlayerDeath = SpawnCharacter;
         GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in Enemies)
         {
