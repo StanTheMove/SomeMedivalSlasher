@@ -63,9 +63,14 @@ namespace Enemies
         public void DamageDeal()
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            TownCentreHealth tcHealth = townCentre.GetComponent<TownCentreHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
+            }
+            if (tcHealth != null)
+            {
+                tcHealth.TakeDamage(damageAmount);
             }
         }
 
