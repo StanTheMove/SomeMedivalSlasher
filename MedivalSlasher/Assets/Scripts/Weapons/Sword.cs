@@ -1,41 +1,36 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Sword : MonoBehaviour
 {
-    public Transform Enemy;
     public GameObject Sword_DH;
     public int attackDamage = 5;
     public float attackRange = 3f;
     public LayerMask enemyLayer;
 
+    private bool canAttack = true;
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
+            StartCoroutine(SwordAttack());
             StartCoroutine(SwordSwing());
-            SwordAttack();
-        }
-    }
-    void SwordAttack()
-    {
-        Collider[] hitEnemy = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
-        foreach (Collider enemy in hitEnemy)
-        {
-            Health Health = enemy.GetComponent<Health>();
-            if (Health != null)
-            {
-                Health.TakeDamage(attackDamage);
-            }
+            canAttack = false;
         }
     }
 
+    IEnumerator SwordAttack()
+    {
+        yield return new WaitForSeconds(2f); // Cooldown duration
+        canAttack = true;
+    }
+
     IEnumerator SwordSwing()
-    { 
-    Sword_DH.GetComponent<Animator>().Play("SwordSwing");
-    yield return new WaitForSeconds(2f);
-    Sword_DH.GetComponent<Animator>().Play("New State");
+    {
+        Sword_DH.GetComponent<Animator>().Play("SwordSwing");
+        yield return new WaitForSeconds(2f);
+        Sword_DH.GetComponent<Animator>().Play("New State");
     }
 }
