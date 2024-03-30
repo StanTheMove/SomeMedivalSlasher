@@ -30,14 +30,14 @@ public class PlayerHealth : Health
     //{
     //    base.TakeDamageArmor(amount);
     //}
-    protected override void Death()
-    {
-        OnPlayerDeath?.Invoke();
-        base.Death();
-    }
+    //protected override void Death()
+    //{
+    //    OnPlayerDeath?.Invoke();
+    //    base.Death();
+    //}
     public void HandlePlayerDeath()
     {
         OnPlayerDeath += endGame.EndGame;
-
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
