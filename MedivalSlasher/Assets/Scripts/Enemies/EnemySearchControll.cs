@@ -9,7 +9,7 @@ namespace Enemies
     public class EnemySearchControll : MonoBehaviour
     {
         public string playerTag = "Player";
-        public string targetTag = "Town Centre";
+        //public string targetTag = "Town Centre";
 
         public Transform FindClosestObject(string tag)
         {

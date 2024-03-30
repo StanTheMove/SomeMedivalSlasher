@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dbdc821ae0ca041918b52e353f5de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   healthBar: {fileID: 0}
 --- !u!1001 &5306295834483934180
 PrefabInstance:
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 0}
   spear: {fileID: 7235750079779996746}
-  attackDamage: 5
+  attackDamage: 10
   attackRange: 5
   enemyLayer:
     serializedVersion: 2
@@ -503,9 +503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6daf92a13afbe084e8a61b821960596e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
   Sword_DH: {fileID: 8324625323233791187}
-  attackDamage: 10
-  attackRange: 2
+  attackDamage: 25
+  attackRange: 3
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -615,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 0}
   axe: {fileID: 8324837023835297418}
-  attackDamage: 20
+  attackDamage: 35
   attackRange: 2
   enemyLayer:
     serializedVersion: 2

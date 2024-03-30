@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Health
 {
     public HealthBar healthBar;
+    public TheEndGame endGame;
     public Action OnPlayerDeath;
 
     void Start()
@@ -24,12 +26,18 @@ public class PlayerHealth : Health
         base.TakeDamage(damage);
         healthBar.SetHealthValue(currentHealth / maxHealth);
     }
-    public override void TakeDamageArmor(float amount)
-    {
-        base.TakeDamageArmor(amount);
-    }
+    //public override void TakeDamageArmor(float amount)
+    //{
+    //    base.TakeDamageArmor(amount);
+    //}
     protected override void Death()
     {
         OnPlayerDeath?.Invoke();
+        base.Death();
+    }
+    public void HandlePlayerDeath()
+    {
+        OnPlayerDeath += endGame.EndGame;
+
     }
 }

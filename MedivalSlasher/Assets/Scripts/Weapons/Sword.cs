@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    public Transform Enemy;
     public GameObject Sword_DH;
     public int attackDamage = 5;
     public float attackRange = 3f;
@@ -15,22 +16,29 @@ public class Sword : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && canAttack)
         {
-            StartCoroutine(SwordAttack());
             StartCoroutine(SwordSwing());
+            SwordAttack();
             canAttack = false;
         }
     }
-
-    IEnumerator SwordAttack()
+    void SwordAttack()
     {
-        yield return new WaitForSeconds(2f); // Cooldown duration
-        canAttack = true;
+        Collider[] hitEnemy = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
+        foreach (Collider enemy in hitEnemy)
+        {
+            Health Health = enemy.GetComponent<Health>();
+            if (Health != null)
+            {
+                Health.TakeDamage(attackDamage);
+            }
+        }
     }
 
     IEnumerator SwordSwing()
     {
         Sword_DH.GetComponent<Animator>().Play("SwordSwing");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.7f);
+        canAttack = true;
         Sword_DH.GetComponent<Animator>().Play("New State");
     }
 }

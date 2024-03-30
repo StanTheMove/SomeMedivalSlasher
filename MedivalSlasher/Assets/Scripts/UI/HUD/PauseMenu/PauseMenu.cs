@@ -1,45 +1,55 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject PausePanel;
-    public GameObject OptionsPanel;
-    private bool IsInPause;
+    
+    private static bool IsInPause = false;
 
-    private void Update()
-    { 
+    public GameObject PausePanel;
+
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            IsInPause = !IsInPause;
-        }
-
-        if (!IsInPause)
-        {
-            PausePanel.SetActive(false);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1f;
-        }
-
-        if (IsInPause)
-        {
-            PausePanel.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            Time.timeScale = 0f;
+            if (IsInPause)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
-    public void ClosePause()
+    public void Resume()
     {
+        PausePanel.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
         IsInPause = false;
     }
 
-    public void PanelOptions()
+    public void Pause()
     {
-        OptionsPanel.SetActive(true);
-        PausePanel.SetActive(false);
+        PausePanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0f;
+        IsInPause = true;
+    }
+
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenuScene");
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

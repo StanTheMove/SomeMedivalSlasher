@@ -9,8 +9,9 @@ namespace Enemies
 {
     public class EnemyNavigationController : MonoBehaviour
     {
-        private Transform townCentre;
+        //private Transform townCentre;
         private Transform player;
+        
         public Action OnPlayerRespawn;
 
         private EnemySearchControll searchControll;
@@ -19,6 +20,7 @@ namespace Enemies
         public float damageAmount = 10f;
         public float stoppingDistance = 2f;
         public float attackCooldown = 1f;
+        private PlayerHealth gameEnd;
 
         private NavMeshAgent agent;
         private bool Cooldown = false;
@@ -38,6 +40,14 @@ namespace Enemies
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+            if (player == null)
+            {
+                if (gameEnd != null)
+                {
+                    gameEnd.HandlePlayerDeath();
+                }
+            }
+
             if (distanceToPlayer <= detectionRange)
             {
                 agent.SetDestination(player.position);
@@ -48,11 +58,11 @@ namespace Enemies
                     StartCoroutine(AttackCooldown());
                 }
             }
-            else
-            {
-                townCentre = GameObject.FindGameObjectWithTag(searchControll.targetTag).transform;
-                agent.SetDestination(townCentre.position);
-            } 
+            //else
+            //{
+            //    townCentre = GameObject.FindGameObjectWithTag(searchControll.targetTag).transform;
+            //    agent.SetDestination(townCentre.position);
+            //} 
         }
 
         public void SetPlayer(GameObject playerObject)
@@ -63,15 +73,15 @@ namespace Enemies
         public void DamageDeal()
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            TownCentreHealth tcHealth = townCentre.GetComponent<TownCentreHealth>();
+            //TownCentreHealth tcHealth = townCentre.GetComponent<TownCentreHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
             }
-            if (tcHealth != null)
-            {
-                tcHealth.TakeDamage(damageAmount);
-            }
+            //if (tcHealth != null)
+            //{
+            //    tcHealth.TakeDamage(damageAmount);
+            //}
         }
 
         IEnumerator AttackCooldown()

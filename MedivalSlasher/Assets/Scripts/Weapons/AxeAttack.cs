@@ -9,13 +9,16 @@ public class AxeAttack : MonoBehaviour
     public int attackDamage = 12;
     public float attackRange = 6f;
     public LayerMask enemyLayer;
+    private bool canAttack = true;
+
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
             StartCoroutine(AxeAnim());
             AxeDamage();
+            canAttack = false;
         }
     }
     void AxeDamage()
@@ -34,7 +37,8 @@ public class AxeAttack : MonoBehaviour
     IEnumerator AxeAnim()
     {
         axe.GetComponent<Animator>().Play("AxeAttacks");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
+        canAttack = true;
         axe.GetComponent<Animator>().Play("New State");
     }
 }

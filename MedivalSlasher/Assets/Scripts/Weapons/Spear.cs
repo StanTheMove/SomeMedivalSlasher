@@ -9,13 +9,15 @@ public class Spear : MonoBehaviour
     public int attackDamage = 7;
     public float attackRange = 10f;
     public LayerMask enemyLayer;
+    private bool canAttack = true;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
             StartCoroutine(SpearSwing());
             SpearAttack();
+            canAttack = false;
         }
     }
     void SpearAttack()
@@ -34,7 +36,8 @@ public class Spear : MonoBehaviour
     IEnumerator SpearSwing()
     {
         spear.GetComponent<Animator>().Play("New Animation");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.4f);
+        canAttack = true;
         spear.GetComponent<Animator>().Play("New State");
     }
 }
